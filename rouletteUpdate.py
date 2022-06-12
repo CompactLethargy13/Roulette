@@ -7,27 +7,9 @@
 #or range of number
 #====================================================================================================================================================================================================
 #import
-#hi
 import random
 import sys
 import requests
-#self update
-__version__ = '1.0'
-response = requests.get('https://raw.githubusercontent.com/vsantiago113/Tkinter-MyTestApp/master/version.txt')
-data = response.text
-def check_updates():
-    try:
-        # -- Online Version File
-        # -- Replace the url for your file online with the one below.
-        response = requests.get(
-            'https://raw.githubusercontent.com/vsantiago113/Tkinter-MyTestApp/master/version.txt')
-        data = response.text
-        if float(data) > float(__version__):
-            print('Software Update, Update Available!')
-            print('Update!{__version__} needs to update to version {data}')
-    except Exception as e:
-        print('Software Update, Unable to Check for Update, Error:' + str(e))
-#====================================================================================================================================================================================================
 #function
 def checkOdd(num):
     if (num%2) == 0:
@@ -50,6 +32,41 @@ def checkUserRange(start,end,num):
         return True
     else:
         return False
+#self update
+__version__ = '1.0'
+response = requests.get('https://raw.githubusercontent.com/CompactLethargy13/Roulette/main/version.txt')
+data = response.text
+def check_updates():
+    try:
+        # -- Online Version File
+        # -- Replace the url for your file online with the one below.
+        response = requests.get('https://raw.githubusercontent.com/CompactLethargy13/Roulette/main/version.txt')
+        data = response.text
+        if float(data) > float(__version__):
+            print('Software Update Available!')
+            print('Update!{__version__} needs to update to version {data}')
+    except Exception as e:
+        print('Software Update, Unable to Check for Update, Error:' + str(e))
+update = requests.get('https://raw.githubusercontent.com/CompactLethargy13/Roulette/main/rouletteUpdate.py')
+fileCurrent = open(str(__file__), "r+")
+currentPath = __file__
+url = "https://raw.githubusercontent.com/CompactLethargy13/Roulette/main/rouletteUpdate.py"
+newfilepath, headers = urllib.request.urlretrieve(url, filename = currentPath)
+newFile = open(str(os.getcwd()))
+list = fileCurrent.readlines()
+listToReplace = newFile.readlines()
+# acts as a counter to know the
+# index of the element to be replaced
+c = 0
+for i in list:
+    for j in listToReplace:
+        Replacement = i.replace(i,j)
+        # changes are made in the list
+        replace = Replacement
+    c += 1
+fileCurrent.truncate(0)
+fileCurrent.writelines(replace)
+fileCurrent.close()
 #===================================================================================================================================================================================================
 #game starts
 print("\033[1;31m __          __  _                            _                          _      _   _         _   _   _  \n \\ \\        / / | |                          | |                        |\
