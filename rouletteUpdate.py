@@ -38,8 +38,6 @@ def checkUserRange(start,end,num):
     else:
         return False
 #self update
-response = requests.get('https://raw.githubusercontent.com/CompactLethargy13/Roulette/main/version.txt')
-data = response.text
 def check_updates():
     try:
         response = requests.get('https://raw.githubusercontent.com/CompactLethargy13/Roulette/main/version.txt')
@@ -72,6 +70,7 @@ def check_updates():
                 fileCurrent.truncate(0)
                 fileCurrent.writelines(replace)
                 fileCurrent.close()
+                print("Updated to "+__version__)
             else:
                 pass
     except Exception as e:
@@ -79,6 +78,8 @@ def check_updates():
 
 #===================================================================================================================================================================================================
 #game starts
+checkUpdate()
+input("ENTER to start")
 print("\033[1;31m __          __  _                            _                          _      _   _         _   _   _  \n \\ \\        / / | |                          | |                        |\
  |    | | | |       | | | | | |\n  \\ \\  /\\  / ___| | ___ ___  _ __ ___   ___  | |_ ___    _ __ ___  _   _| | ___| |_| |_ ___  | | | | | |\n   \\ \\/  \\/ / _ | |/ __/ _ \\| '_ ` _ \\ / _ \\ | __\
 / _ \\  | '__/ _ \\| | | | |/ _ | __| __/ _ \\ | | | | | |\n    \\  /\\  |  __| | (_| (_) | | | | | |  __/ | || (_) | | | | (_) | |_| | |  __| |_| ||  __/ |_| |_| |_|\n     \\/  \\/ \\___|_|\\___\\\
