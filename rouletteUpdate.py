@@ -13,6 +13,8 @@ import sys
 import requests
 import urllib.request
 import os
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 #function
 def checkOdd(num):
     if (num%2) == 0:
