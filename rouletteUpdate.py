@@ -1,4 +1,4 @@
-__version__ = "0.9"
+__version__ = "0.9.2"
 #====================================================================================================================================================================================================
 #how to use ansi codes:
 #print("\033[1;{ANSI_CODE} texts texts")
@@ -44,7 +44,9 @@ def check_updates():
     try:
         response = requests.get('https://raw.githubusercontent.com/CompactLethargy13/Roulette/main/version.txt')
         data = response.text
-        if float(data) > float(__version__):
+        data = data.translate({ ord("."): None })
+        __GameVersion__ = __version__.translate({ ord("."): None })
+        if int(data) > int(__GameVersion):
             print('Software Update Available!')
             print('Update!{__version__} needs to update to version {data}')
             while True:
@@ -58,7 +60,7 @@ def check_updates():
                 currentPath = __file__
                 url = "https://raw.githubusercontent.com/CompactLethargy13/Roulette/main/rouletteUpdate.py"
                 newfilepath, headers = urllib.request.urlretrieve(url, filename = currentPath)
-                newFile = open(str(os.getcwd()),"r+")
+                newFile = open(str(newfilepath),"r+")
                 list = fileCurrent.readlines()
                 listToReplace = newFile.readlines()
                 c = 0
