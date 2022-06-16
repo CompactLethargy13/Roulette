@@ -1,85 +1,30 @@
 __version__ = "0.9.2"
-#====================================================================================================================================================================================================
-#how to use ansi codes:
-#print("\033[1;{ANSI_CODE} texts texts")
-#include choice of:
-#high or low (done)
-#odd or even (done)
-#or range of number
-#====================================================================================================================================================================================================
+'''
+====================================================================================================================================================================================================
+how to use ansi codes:
+print("\033[1;{ANSI_CODE} texts texts")
+include choice of:
+high or low (done)
+odd or even (done)
+or range of number (done)
+add about and help page
+====================================================================================================================================================================================================
+'''
 #import
+from rouletteFunctions import checkUpdates,checkOdd,userCheck,checkLow,checkUserRange
 import random
 import sys
-import requests
-import urllib.request
 import os
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
-#function
-def checkOdd(num):
-    if (num%2) == 0:
-        return False
-    else:
-        return True
-def checkLow(num):
-    if num in range(0,19):
-        return True
-    elif num in range(19,37):
-        return False
-def userCheck(yesNo):
-    global usrCheck
-    if yesNo == "y":
-        usrCheck = True
-    else:
-        usrCheck = False
-def checkUserRange(start,end,num):
-    if num in range(start,end):
-        return True
-    else:
-        return False
-#self update
-def check_updates():
-    try:
-        response = requests.get('https://raw.githubusercontent.com/CompactLethargy13/Roulette/main/version.txt')
-        data = response.text
-        data = data.translate({ ord("."): None })
-        __GameVersion__ = __version__.translate({ ord("."): None })
-        if int(data) > int(__GameVersion):
-            print('Software Update Available!')
-            print('Update!{__version__} needs to update to version {data}')
-            while True:
-                toUpdate = input("Do you want to update now? If no, this will be updated next time.(y/n):").lower()
-                if toUpdate == "y" or toUpdate == "n":
-                    break
-                else:
-                    continue
-            if toUpdate == "y":
-                fileCurrent = open(str(__file__), "r+")
-                currentPath = __file__
-                url = "https://raw.githubusercontent.com/CompactLethargy13/Roulette/main/rouletteUpdate.py"
-                newfilepath, headers = urllib.request.urlretrieve(url, filename = currentPath)
-                newFile = open(str(newfilepath),"r+")
-                list = fileCurrent.readlines()
-                listToReplace = newFile.readlines()
-                c = 0
-                for i in list:
-                    for j in listToReplace:
-                        Replacement = i.replace(i,j)
-                        replace = Replacement
-                    c += 1
-                fileCurrent.truncate(0)
-                fileCurrent.writelines(replace)
-                fileCurrent.close()
-                print("Updated to "+__version__)
-            else:
-                pass
-    except Exception as e:
-        print('Software Update, Unable to Check for Update, Error:' + str(e))
-
 #===================================================================================================================================================================================================
 #game starts
-checkUpdate()
-input("ENTER to start")
+checkUpdates()
+input("  ______ _   _ _______ ______ _____    _              _             _   \n |  ____| \\ | |__   __|  ____|  __ \\  | |            | |           | |  \n | |__  |  \\| |  | |  | |__  | |__) | |\
+ |_ ___    ___| |_ __ _ _ __| |_ \n |  __| | . ` |  | |  |  __| |  _  /  | __/ _ \\  / __| __/ _` | '__| __|\n | |____| |\\  |  | |  | |____| | \\ \\  | || (_) | \\__ | || (_| | |  | |_ \n |______\
+|_| \\_|  |_|  |______|_|  \\_\\  \\__\\___/  |___/\\__\\__,_|_|   \\__|")
+os.system("cls")
+os.system("clear")
 print("\033[1;31m __          __  _                            _                          _      _   _         _   _   _  \n \\ \\        / / | |                          | |                        |\
  |    | | | |       | | | | | |\n  \\ \\  /\\  / ___| | ___ ___  _ __ ___   ___  | |_ ___    _ __ ___  _   _| | ___| |_| |_ ___  | | | | | |\n   \\ \\/  \\/ / _ | |/ __/ _ \\| '_ ` _ \\ / _ \\ | __\
 / _ \\  | '__/ _ \\| | | | |/ _ | __| __/ _ \\ | | | | | |\n    \\  /\\  |  __| | (_| (_) | | | | | |  __/ | || (_) | | | | (_) | |_| | |  __| |_| ||  __/ |_| |_| |_|\n     \\/  \\/ \\___|_|\\___\\\
@@ -230,6 +175,9 @@ play(1/2/3): ")
         print("Press ENTER to exit")
         input()
         sys.exit()
+    input("ENTER to continue")
+    os.system("cls")
+    os.system("clear")
 
 print("You have",credits,"credits. ")
 print("\033[1;31m  _____          __  __ ______    ______      ________ _____  \n / ____|   /\\   |  \\/  |  ____|  / __ \\ \\    / |  ____|  __ \\ \n| |  __   /  \\  | \\  / | |__    | |  | \\ \
