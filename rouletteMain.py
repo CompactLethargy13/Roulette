@@ -1,4 +1,4 @@
-__version__ = "1.2.1"
+__version__ = "1.2.2"
 '''
 ====================================================================================================================================================================================================
 IMPORTANT!!!!!!!! MAKE CHECK FOR GAMEMODE
@@ -15,7 +15,8 @@ try best as i can to add outside bets
 '''
 #import
 import numbers
-from rouletteFunctions import checkUpdates,checkOdd,checkLow,checkUserRange,checkRange3,checkRed,others
+from turtle import clear
+from rouletteFunctions import checkUpdates,checkOdd,checkLow,checkUserRange,checkRange3,checkRed,plannedChanges,clearscr,others
 import random
 import sys
 import os
@@ -49,10 +50,8 @@ logging.info("checking version done")
 os.system("cls")
 os.system("clear")
 help = input("\033[1;37m  ______ _   _ _______ ______ _____    _              _             _   \n |  ____| \\ | |__   __|  ____|  __ \\  | |            | |           | |  \n | |__  |  \\| |  | |  | |__  | |__) | | |_ ___    ___| |_ __ _ _ __| |_ \n |  __| | . ` |  | |  |  __| |  _  /  | __/ _ \\  / __| __/ _` | '__| __|\n | |____| |\\  |  | |  | |____| | \\ \\  | || (_) | \\__ | || (_| | |  | |_ \n |______|_| \\_|  |_|  |______|_|  \\_\\  \\__\\___/  |___/\\__\\__,_|_|   \\__|\nQuestion mark (?) for help page: ")
-if help == '?':
-    others.helpPage()
-os.system("cls")
-os.system("clear")
+others.helpPage(help)
+clearscr()
 #welcome text
 print("\033[1;31m __          __  _                            _                          _      _   _         _   _   _  \n \\ \\        / / | |                          | |                        | |    | | | |       | | | | | |\n  \\ \\  /\\  / ___| | ___ ___  _ __ ___   ___  | |_ ___    _ __ ___  _   _| | ___| |_| |_ ___  | | | | | |\n   \\ \\/  \\/ / _ | |/ __/ _ \\| '_ ` _ \\ / _ \\ | __/ _ \\  | '__/ _ \\| | | | |/ _ | __| __/ _ \\ | | | | | |\n    \\  /\\  |  __| | (_| (_) | | | | | |  __/ | || (_) | | | | (_) | |_| | |  __| |_| ||  __/ |_| |_| |_|\n     \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|  \\__\\___/  |_|  \\___/ \\__,_|_|\\___|\\__|\\__\\___| (_) (_) (_)\n")
 #credits
@@ -72,8 +71,7 @@ while credits > 0:
         gameMode = int(input("Do you want to bet on:\n1: Whether the number is odd or even\n2: What range the number will be in \n3: A specific range of numbers \n4: if the number will be 0 or 00\n5: If the number will be black or red\nInput what gamemode you want to play(1/2/3): "))
         while gameMode not in range(1,5):
             print("Please input a valid integer. ")
-            os.system('cls')
-            os.system('clear')
+            clearscr()
             gameMode = int(input("Do you want to bet on:\n1: Whether the number is odd or even\n2: What range the number will be in \n3: A specific range of numbers \n4: if the number will be 0 or 00\n5: If the number will be black or red\nInput what gamemode you want to play(1/2/3): "))
         while True:
             try:
@@ -231,8 +229,7 @@ while credits > 0:
         input("Press ENTER to exit")
         sys.exit()
     input("ENTER to continue")
-    os.system("cls")
-    os.system("clear")
+    clearscr
 
 print("You have",credits,"credits. ")
 print("\033[1;31m  _____          __  __ ______    ______      ________ _____  \n / ____|   /\\   |  \\/  |  ____|  / __ \\ \\    / |  ____|  __ \\ \n| |  __   /  \\  | \\  / | |__    | |  | \\ \\  / /| |__  | |__) |\n| | |_ | / /\\ \\ | |\\/| |  __|   | |  | |\\ \\/ / |  __| |  _  / \n| |__| |/ ____ \\| |  | | |____  | |__| | \\  /  | |____| | \\ \\ \n \\_____/_/    \\_|_|  |_|______|  \\____/   \\/   |______|_|  \\_\\")
