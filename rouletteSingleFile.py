@@ -15,7 +15,6 @@ try best as i can to add outside bets
 '''
 #import
 import numbers
-from rouletteFunctions import checkUpdates,checkOdd,checkLow,checkUserRange,checkRange3,checkRed,others
 import random
 import sys
 import os
