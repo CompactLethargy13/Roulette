@@ -101,7 +101,7 @@ def checkUpdates(__version__):
         __GameVersion = __version__.translate({ ord("."): None })
         if int(data) > int(__GameVersion):
             print('Software Update Available!')
-            print('Update!{__version__} needs to update to version {data}')
+            print("Update!",version," needs to update to version ",data)
             while True:
                 toUpdate = input("Do you want to update now? If no, this will be updated next time.(y/n):").lower()
                 if toUpdate == "y" or toUpdate == "n":
