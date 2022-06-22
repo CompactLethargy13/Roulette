@@ -111,7 +111,7 @@ def checkUpdates(__version__):
             if toUpdate == "y":
                 fileCurrent = open(str(__file__), "r+")
                 currentPath = __file__
-                url = "https://raw.githubusercontent.com/CompactLethargy13/Roulette/main/rouletteUpdate.py"
+                url = "https://raw.githubusercontent.com/CompactLethargy13/Roulette/main/rouletteSingleFile.py"
                 newfilepath, headers = urllib.request.urlretrieve(url, filename = currentPath)
                 newFile = open(str(newfilepath),"r+")
                 list = fileCurrent.readlines()
